@@ -1,0 +1,11 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "dependencies":{
+    "django": "pip install django",
+    "MySQL-python": {
+      "pip": "pip install MySQL-python",
+      "apt-get": "sudo apt-get install python-mysqldb"
+    }
+  }
+}
