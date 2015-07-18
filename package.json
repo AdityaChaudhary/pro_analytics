@@ -6,6 +6,12 @@
     "MySQL-python": {
       "pip": "pip install MySQL-python",
       "apt-get": "sudo apt-get install python-mysqldb"
+    },
+    "Django REST frameork":{
+      "djangorestframework": "pip install djangorestframework",
+      "markdown": "pip install markdown", /*Markdown support for the browsable API.*/
+      "django-filter": "pip install django-filter",  /*Filtering support*/
+      "pygments": "pip install pygments"   /*We'll be using this for the code highlighting*/
     }
   }
 }

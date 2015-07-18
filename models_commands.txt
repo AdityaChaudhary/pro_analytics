@@ -1,0 +1,17 @@
+ACTIVATE MODEL IN AN APP
+-------------------------
+python manage.py makemigrations <python-app-name>
+
+GET SQL STATEMENTS FROM MODEL (in migration folder 0001_initial.py)
+--------------------------------------------------------------------
+python manage.py sqlmigrate <python-app-name> 0001
+
+
+CREATE TABLES IN DATABASE
+-------------------------
+python manage.py migrate
+
+
+CHECK SYSTEM
+------------
+python manage.py check
