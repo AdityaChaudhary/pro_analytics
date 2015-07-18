@@ -1,22 +1,25 @@
 from django.db import models
-from pygments.lexers import get_all_lexers
-from pygments.styles import get_all_styles
+
+# Create your models here.
 
 
-LEXERS = [item for item in get_all_lexers() if item[1]]
-LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
-STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
-
-
-class Snippet(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100, blank=True, default='')
-    code = models.TextField()
-    linenos = models.BooleanField(default=False)
-    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
-    style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
-    owner = models.ForeignKey('auth.User', related_name='snippets')
-    highlighted = models.TextField()
+class Technology(models.Model):
+    browserName = models.CharField(db_column='browser_name', max_length=20, blank=True, default='')
+    browserVersion = models.CharField(db_column='browser_version', max_length=20, blank=True, default='')
+    browserLanguage = models.CharField(db_column='browser_language', max_length=10, blank=True, default='')
+    systemOS = models.CharField(db_column='system_os', max_length=20, blank=True, default='')
+    viewHeight = models.IntegerField(db_column='view_height', blank=True, default=-1)
+    viewWidth = models.IntegerField(db_column='view_width', blank=True, default=-1)
+    screenHeight = models.IntegerField(db_column='screen_height', blank=True, default=-1)
+    screenWidth = models.IntegerField(db_column='screen_width', blank=True, default=-1)
+    colorDepth = models.IntegerField(db_column='color_depth', blank=True, default=-1)
+    flashVersion = models.CharField(db_column='flash_version', max_length=20, blank=True, default='')
+    cookieEnabled = models.CharField(db_column='cookie_enabled', max_length=5, blank=True, default='')
+    quickTimeEnabled = models.CharField(db_column='quick_time_enabled', max_length=5, blank=True, default='')
+    isMobile = models.CharField(db_column='is_mobile', max_length=5, blank=True, default='')
+    javaEnabled = models.CharField(db_column='java_enabled', max_length=5, blank=True, default='')
+    userAgent = models.CharField(db_column='user_agent', max_length=150, blank=True, default='')
 
     class Meta:
-        ordering = ('created',)
+        db_table = 'technology_dim'
+        ordering = ('id',)

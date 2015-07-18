@@ -1,3 +1,5 @@
+__author__ = 'aditya'
+
 from django.conf.urls import patterns, url
 from rest_framework.urlpatterns import format_suffix_patterns
 from injector import views
@@ -10,8 +12,7 @@ urlpatterns = [
 """
 
 urlpatterns = [
-    url(r'^snippets/$', views.SnippetList.as_view()),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
+    url(r'^analytics/$', views.DataInjector.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
