@@ -254,8 +254,31 @@ function ProAnalytics() {
         };
     };
 
+    this.inject = function(data, url){
+        if(typeof url === 'undefined'){
+            url = "http://127.0.0.1:3000/analytics/";
+        }
+        var xhr = new XMLHttpRequest();   // new HttpRequest instance
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = function() {
+            var responseText = xhr.responseText;
+            console.log(responseText);
+            // process the response.
+        };
+
+        xhr.onerror = function(err) {
+            console.log('There was an error!', err);
+        };
+
+    };
+
 
     this.init = function () {
+        //this.inject(this.trackEvent("page load"), "http://localhost:3000/analytics/");
         console.log(this.trackEvent("page load"));
     };
 

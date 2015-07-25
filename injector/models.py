@@ -23,3 +23,54 @@ class Technology(models.Model):
     class Meta:
         db_table = 'technology_dim'
         ordering = ('id',)
+
+
+
+class Referrer(models.Model):
+    referrerUrl = models.CharField(db_column='referrer_url', max_length=500, blank=True, default='')
+
+    class Meta:
+        db_table = 'referrer_dim'
+        ordering = ('id',)
+
+
+
+class Page(models.Model):
+    url = models.CharField(db_column='url', max_length=500, blank=True, default='')
+    pageTitle = models.CharField(db_column='page_title', max_length=50, blank=True, default='')
+    loadTime = models.IntegerField(db_column='load_time')
+    pageVisitTimeStamp = models.BigIntegerField(db_column='page_visit_time_stamp')
+
+
+    class Meta:
+        db_table = 'page_dim'
+        ordering = ('id',)
+
+
+class Guid(models.Model):
+    guid = models.CharField(db_column='guid', max_length=50, blank=True, default='')
+
+    class Meta:
+        db_table = 'guid'
+        ordering = ('id',)
+
+
+class EventStory(models.Model):
+    guid = models.ForeignKey(Guid)
+    page = models.ForeignKey(Page)
+    referrer = models.ForeignKey(Referrer)
+    technology = models.ForeignKey(Technology)
+
+    class Meta:
+        db_table = 'event_story'
+        ordering = ('id',)
+
+
+
+class Event(models.Model):
+    eventName = models.CharField(db_column='event_name', max_length=50, blank=True, default='')
+    eventStory = models.ForeignKey(EventStory, db_column='event_story_id')
+
+    class Meta:
+        db_table = 'events'
+        ordering = ('id',)

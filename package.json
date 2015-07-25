@@ -11,7 +11,8 @@
       "djangorestframework": "pip install djangorestframework",
       "markdown": "pip install markdown", /*Markdown support for the browsable API.*/
       "django-filter": "pip install django-filter",  /*Filtering support*/
-      "pygments": "pip install pygments"   /*We'll be using this for the code highlighting*/
+      "pygments": "pip install pygments"   /*We'll be using this for the code highlighting*/,
+      "core-headers": "pip install django-cors-headers" /*to allow cross domain requests*/
     }
   }
 }

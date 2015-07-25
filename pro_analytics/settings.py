@@ -40,11 +40,15 @@ INSTALLED_APPS = (
 
     'rest_framework',  # REST FRAMEWORK
 
+    'corsheaders',  # FOR CROSS DOMAIN REQUESTS
+
     'injector',  # DATA ENRICHER AND INJECTOR
 )
 
 MIDDLEWARE_CLASSES = (
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # FOR CROSS DOMAIN REQUESTS
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,7 +56,18 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+
 )
+
+
+CORS_ORIGIN_ALLOW_ALL = True  # FOR CROSS DOMAIN REQUESTS
+
+CORS_ALLOW_METHODS = (  # FOR CROSS DOMAIN REQUESTS
+    'GET',
+    'POST'
+)
+
 
 ROOT_URLCONF = 'pro_analytics.urls'
 
