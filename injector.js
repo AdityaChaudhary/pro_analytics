@@ -278,8 +278,8 @@ function ProAnalytics() {
 
 
     this.init = function () {
-        //this.inject(this.trackEvent("page load"), "http://localhost:3000/analytics/");
-        console.log(this.trackEvent("page load"));
+        this.inject(this.trackEvent("page load"), "http://localhost:3000/analytics/");
+        //console.log(this.trackEvent("page load"));
     };
 
 

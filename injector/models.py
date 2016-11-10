@@ -41,6 +41,9 @@ class Page(models.Model):
     loadTime = models.IntegerField(db_column='load_time')
     pageVisitTimeStamp = models.BigIntegerField(db_column='page_visit_time_stamp')
 
+    #loadTime = models.CharField(db_column='load_time', max_length=50, blank=True, default='')
+    #pageVisitTimeStamp = models.CharField(db_column='page_visit_time_stamp', max_length=50)
+
 
     class Meta:
         db_table = 'page_dim'
@@ -74,3 +77,23 @@ class Event(models.Model):
     class Meta:
         db_table = 'events'
         ordering = ('id',)
+
+"""
+
+class FTemp(models.Model):
+    name = models.CharField(db_column='name', max_length=50, blank=True, default='')
+
+    class Meta:
+        db_table = 'f_temp'
+        ordering = ('id',)
+
+
+class Temp(models.Model):
+    eventName = models.CharField(db_column='temp_name', max_length=50, blank=True, default='')
+    eventStory = models.ForeignKey(FTemp, db_column='temp_story_id')
+
+    class Meta:
+        db_table = 'temp'
+        ordering = ('id',)
+
+        """
